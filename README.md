@@ -14,5 +14,5 @@ uv sync
 
 To run:
 ```
-uv run main.py
+uv run main.py --model_dir Spark-TTS-0.5B --device 0 --host 0.0.0.0 --port 8501
 ```
