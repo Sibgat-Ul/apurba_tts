@@ -5,8 +5,9 @@ git clone apurba_tts
 ```
 
 2. install uv if you haven't already
-cd apurba_tts && pip install uv (if you do)
-
+```
+cd apurba_tts && pip install uv
+```
 3. sync:
 ```
 uv sync
