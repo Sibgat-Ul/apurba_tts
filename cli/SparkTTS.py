@@ -33,7 +33,7 @@ class SparkTTS:
     Spark-TTS for text-to-speech generation.
     """
 
-    def __init__(self, model_dir: Path, lora_dir: Path = None, load_lora: bool = False, device: torch.device = torch.device("cuda:0"), streaming: bool = False, use_unsloth: bool = True):
+    def __init__(self, model_dir: Path, lora_dir: Path = None, load_lora: bool = False, device: torch.device = torch.device("cuda:0"), streaming: bool = False, use_unsloth: bool = False):
         """
         Initializes the SparkTTS model with the provided configurations and device.
 
@@ -311,14 +311,15 @@ class SparkTTS:
         """
         if gender is not None:
             if gender == "female":
-                import os
                 prompt_speech_path = Path(f"cli/LJ001-0001.wav")
-                prompt, global_token_ids = self.process_prompt(
-                    text, prompt_speech_path, prompt_text
-                )
             else:
-                prompt = self.process_prompt_control(gender, pitch, speed, text)
-                global_token_ids = None
+                # prompt = self.process_prompt_control(gender, pitch, speed, text)
+                prompt_speech_path = Path(f"cli/en_male_1.wav")
+            
+            prompt, global_token_ids = self.process_prompt(
+                text, prompt_speech_path, prompt_text
+            )
+
         else:
             prompt, global_token_ids = self.process_prompt(
                 text, prompt_speech_path, prompt_text
@@ -334,7 +335,7 @@ class SparkTTS:
 
         generation_kwargs = {
             **model_inputs,
-            "max_new_tokens": 3000,
+            "max_new_tokens": 1024,
             "do_sample": True,
             "top_k": top_k,
             "top_p": top_p,

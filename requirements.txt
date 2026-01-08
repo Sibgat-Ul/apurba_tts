@@ -1,16 +1,9 @@
-einops==0.8.1
-einx==0.3.0
-numpy==2.2.3
-omegaconf==2.3.0
-packaging==24.2
-safetensors==0.5.2
-soundfile==0.12.1
-soxr==0.5.0.post1
-torch==2.5.1
-torchaudio==2.5.1
-tqdm==4.66.5
-transformers==4.46.2
-gradio==5.18.0
-fastapi==0.115.0
-uvicorn[standard]==0.32.0
-websockets==13.0
+bitsandbytes accelerate {xformers} peft==0.17.1 trl triton cut_cross_entropy unsloth_zoo
+!pip install sentencepiece protobuf "datasets==4.3.0" "huggingface_hub>=0.34.0" hf_transfer
+!pip install --no-deps unsloth
+!pip install transformers==4.56.2
+!pip install --no-deps trl==0.22.2
+!git clone https://github.com/SparkAudio/Spark-TTS
+!git clone https://github.com/Sibgat-Ul/VoxCPM_bn_en
+!pip install omegaconf einx torchcodec "datasets>=3.4.1,<4.0.0"
+!pip install soxr soundfile einops -q
